@@ -72,7 +72,7 @@ export async function handler(chatUpdate) {
                 if (!isNumber(user.warn))
                     user.warn = 0
                 if (!isNumber(user.level))
-                    user.level = 0
+                    user.level = 10
                 if (!('role' in user))
                     user.role = 'Beginner'
                 if (!('autolevelup' in user))
@@ -194,9 +194,9 @@ export async function handler(chatUpdate) {
                     
 
                 if (!isNumber(user.premium))
-                    user.premium = false
+                    user.premium = true
                 if (!isNumber(user.premiumTime))
-                    user.premiumTime = 0
+                    user.premiumTime = 2
                 if (!isNumber(user.limitjoin))
                     user.limitjoin = 0
             } else
@@ -302,13 +302,13 @@ export async function handler(chatUpdate) {
                 if (!('autosticker' in chat))
                     chat.autosticker = false
                 if (!('premium' in chat))
-                    chat.premium = false
+                    chat.premium = true
                  if (!('onlyenglish' in chat))
                     chat.onlyLatinos = false
                 if (!('premiumTime' in chat)) 
-                    chat.premiumTime = false
+                    chat.premiumTime = true
                 if (!('premnsfw' in chat))
-                    chat.premnsfw = false
+                    chat.premnsfw = true
                 if (!isNumber(chat.expired))
                     chat.expired = 0
             } else
@@ -327,17 +327,17 @@ export async function handler(chatUpdate) {
                     simi: false,
                     expired: 0,
                     onlyenglish: false,
-                    autosticker: false,
-                    premium: false,
-	            premiumTime: false,
-                    premnsfw: false, 
+                    autosticker: true,
+                    premium: true,
+	            premiumTime: true,
+                    premnsfw: true, 
                 }
             let settings = global.db.data.settings[this.user.jid]
             if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
             if (settings) {
                 if (!('self' in settings)) settings.self = false
                 if (!('autoread' in settings)) settings.autoread = false
-                if (!('restrict' in settings)) settings.restrict = false
+                if (!('restrict' in settings)) settings.restrict = true
                 if (!('anticall' in settings)) settings.anticall = true
                 if (!('autorestart' in settings)) settings.autorestart = false
                 if (!('restartDB' in settings)) settings.restartDB = 0
@@ -347,7 +347,7 @@ export async function handler(chatUpdate) {
                 autorestart: false,
                 anticall: true,
                 restartDB: 0,
-                restrict: false
+                restrict: true
             }
         } catch (e) {
             console.error(e)
