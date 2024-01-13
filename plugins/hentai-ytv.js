@@ -1,14 +1,19 @@
-import { xvideosSearch, xvideosdl } from '../lib/scraper.js';
+import fetch from 'node-fetch';
 
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
   let chat = global.db.data.chats[m.chat];
-  if (!chat.nsfw) throw `🚫 This group does not support NSFW content.\n\nTo turn it on, use: *${usedPrefix}enable* nsfw`;
-  let user = global.db.data.users[m.sender].age;
-  if (user < 18) throw `❎ You must be 18 years or older to use this feature.`;
-  if (!text) throw `✳️ What do you want to search?\n📌 Usage: *${usedPrefix + command} <search>*\n\nExample: Hot desi bhabi or you can use a link as well\nExample: .xnxx link *`;
+  if (!chat.nsfw)
+    throw `💝 QUEEN HENTAI 💝  does not support NSFW.\n\nTo turn it on, use: ${usedPrefix}on nsfw \n\n🤤🤤🤤🤤🤤🤤🤤🤤🤤`;
 
-  m.react('⌛');
-    if (!text) throw 'Please provide a search query or a valid Xvideos URL.';
+  let user = global.db.data.users[m.sender].age;
+  if (user < 17)
+    throw `Bza,18+ hode. 😁 Age must be 18`;
+
+  if (!text)
+    throw `💝 QUEEN HENTAI 💝 , What do you want to search on 💝 QUEEN HENTAI 💝?\n🕸️ Usage: ${usedPrefix + command} <search>\n\nEx:Mia කලීපා 🤣  or bza can use a link \nEx: .xnxx link *`;
+
+  m.react(rwait);
+  
   
     // Check if the input is a valid Xvideos URL
     const isURL = /^(https?:\/\/)?(www\.)?xvideos\.com\/.+$/i.test(text);
