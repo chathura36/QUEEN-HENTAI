@@ -45,10 +45,19 @@ import ytdl from 'ytdl-core';
     } catch (error) {
       console.error(error);
       throw 'Failed to fetch Xvideos video details.';
-    }
+          } 
   };
 
   handler.help = ['ytmp4 <yt-link>'];
 handler.tags = ['dl'];
 handler.command = ['ytmp4', 'video'];
 handler.diamond = false;
+  handler.help = ['xvid']
+  handler.tags = ['nsfw']
+handler.group = false;
+handler.premium = false;
+handler.register = false;
+
+handler.premium = false;
+
+export default handler;
