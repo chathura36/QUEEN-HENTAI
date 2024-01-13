@@ -50,12 +50,7 @@ let handler = async (m, { conn, args, isPrems, isOwner, usedPrefix, command }) =
     }
   };
 
-  handler.help = ['ytv']
-handler.command = ['ytv'];
-handler.group = false;
-handler.premium = false;
-handler.register = false;
-
-handler.premium = false;
-
-export default handler;
+  handler.help = ['ytmp4 <yt-link>'];
+handler.tags = ['dl'];
+handler.command = ['ytmp4', 'video'];
+handler.diamond = false;
