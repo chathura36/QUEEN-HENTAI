@@ -1,18 +1,4 @@
-import fetch from 'node-fetch';
 
-let handler = async (m, { conn, args, text, usedPrefix, command }) => {
-  let chat = global.db.data.chats[m.chat];
-  if (!chat.nsfw)
-    throw `💝 QUEEN HENTAI 💝  does not support NSFW.\n\nTo turn it on, use: ${usedPrefix}on nsfw \n\n🤤🤤🤤🤤🤤🤤🤤🤤🤤`;
-
-  let user = global.db.data.users[m.sender].age;
-  if (user < 17)
-    throw `Bza,18+ hode. 😁 Age must be 18`;
-
-  if (!text)
-    throw `💝 QUEEN HENTAI 💝 , What do you want to search on 💝 QUEEN HENTAI 💝?\n🕸️ Usage: ${usedPrefix + command} <search>\n\nEx:Mia කලීපා 🤣  or bza can use a link \nEx: .xnxx link *`;
-
-  m.react(rwait);
   
   
     // Check if the input is a valid Xvideos URL
@@ -55,7 +41,6 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
   };
 
   handler.help = ['ytv']
-  handler.tags = ['nsfw']
 handler.command = ['ytv'];
 handler.group = false;
 handler.premium = false;
