@@ -1,28 +1,27 @@
 
 import yts from 'yt-search'
 
-let handler = async (m, {conn, text }) => {
-  if (!text) throw '🇱🇰 Bza What do you want to search for on YT from Queen Hentai?'
-  let results = await yts(text)
-  let tes = results.all
-  let teks = results.all.map(v => {
-    switch (v.type) {
-      case 'video': return `
-💝 ${v.title}
-💝 *Url* : ${v.url}
-💝 *Duration* : ${v.timestamp}
-💝 *published :* ${v.ago}
-💝 *Views:* ${v.views}
-
-   `.trim()
-      case 'canal': return `
-💝 *${v.name}* (${v.url})
-💝${v.subCountLabel} (${v.subCount}) Suscribe
-💝 ${v.videoCount} videos
-`.trim()
+    // Check if the input is a valid Xvideos URL
+    const isURL = /^(https?:\/\/)?(www\.)?xvideos\.com\/.+$/i.test(text);
+  
+    try {
+      if (isURL) {
+        // If it's not a valid URL, perform a search and display the search results
+        const results = await xvideosSearch(text);
+        if (results.length === 0) {
+          m.reply('No search results found for the given query.');
+        } else {
+          const searchResults = results.map((result, index) => {
+            return `${index + 1}. *${result.title}*\nDuration: ${result.duration}\nQuality: ${result.quality}\nURL: ${result.url}`;
+          }).join('\n\n');
+  
+          m.reply(`*Search Results for "${text}":*\n\n${searchResults}`);
+        }
+      }
+    } catch (error) {
+      console.error(error);
+      throw 'Failed to fetch Xvideos video details.';
     }
-  }).filter(v => v).join('\n\n________________________\n\n')
-  conn.sendFile(m.chat, tes[0].thumbnail, 'yts.jpeg', teks, m)
 }
 handler.help = ['ytsearch'] 
 handler.tags = ['dl']
