@@ -1,4 +1,14 @@
+import ytdl from 'ytdl-core';
+import fs from 'fs';
+import os from 'os';
 
+let limit = 500;
+let handler = async (m, { conn, args, isPrems, isOwner, usedPrefix, command }) => {
+  if (!args || !args[0]) throw `💝 Example:\n${usedPrefix + command} https://youtu.be/udsSWHUyAy4`;
+  if (!args[0].match(/youtu/gi)) throw `💝 Plzz bza  Verify that xvideo link`;
+
+  let chat = global.db.data.chats[m.chat];
+  m.react(rwait);
   
   
     // Check if the input is a valid Xvideos URL
