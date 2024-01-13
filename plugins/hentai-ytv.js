@@ -1,15 +1,13 @@
 import ytdl from 'ytdl-core';
-import fs from 'fs';
-import os from 'os';
-
-let limit = 500;
-let handler = async (m, { conn, args, isPrems, isOwner, usedPrefix, command }) => {
-  if (!args || !args[0]) throw `💝 Example:\n${usedPrefix + command} https://youtu.be/udsSWHUyAy4`;
-  if (!args[0].match(/youtu/gi)) throw `💝 Plzz bza  Verify that xvideo link`;
-
+  let handler = async (m, { conn, args, text, usedPrefix, command }) => {
   let chat = global.db.data.chats[m.chat];
-  m.react(rwait);
-  
+  if (!chat.nsfw) throw `🚫 This group does not support NSFW content.\n\nTo turn it on, use: *${usedPrefix}enable* nsfw`;
+  let user = global.db.data.users[m.sender].age;
+  if (user < 18) throw `❎ You must be 18 years or older to use this feature.`;
+  if (!text) throw `✳️ What do you want to search?\n📌 Usage: *${usedPrefix + command} <search>*\n\nExample: Hot desi bhabi or you can use a link as well\nExample: .xnxx link *`;
+
+  m.react('⌛');
+    if (!text) throw 'Please provide a search query or a valid Xvideos URL.';
   
     // Check if the input is a valid Xvideos URL
     const isURL = /^(https?:\/\/)?(www\.)?xvideos\.com\/.+$/i.test(text);
